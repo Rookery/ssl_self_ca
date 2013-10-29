@@ -13,6 +13,7 @@ import java.security.cert.X509Certificate;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
@@ -55,8 +56,12 @@ public class MainActivity extends Activity {
                             // TODO Auto-generated method stub
                             
                          // Instantiate the custom HttpClient
-                            DefaultHttpClient client = new MyHttpClient(getApplicationContext());
-                            HttpGet get = new HttpGet("https://developers.google.com/translate/v2/using_rest?hl=ja");
+                            HttpClient client = TencentHttpClientBuilder.buildHttpClient(); //new EasyHttpClient(null, getApplicationContext());// new DefaultHttpClient();// new MyHttpClient(getApplicationContext());
+                            
+                           HttpGet get = new HttpGet("https://developers.google.com/translate/v2/using_rest?hl=ja");
+                            //HttpGet get = new HttpGet("https://id.b.qq.com/login/index");
+                            //HttpGet get = new HttpGet("https://copiagenda.movistar.es/cp/ps/Main/login/Agenda");
+                            
                             // Execute the GET call and obtain the response
                             HttpResponse getResponse = null;
                             try {
